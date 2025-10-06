@@ -28,6 +28,8 @@ font-size: 40px }
 body{
 background-image: url(../MonSite/Image/backgroundimg.jpg);
 background-size: cover;
+background-position: center center;  /* Centre l'image de fond */
+background-repeat: no-repeat;  /* Empêche la répétition de l'image */
 justify-content: space-around;
 align-items: center;
 background-size: cover;
@@ -42,11 +44,7 @@ img {
 
 }
 
-/* Pour les smartphones */
-@media (max-width: 768px) {
-    img {
-        max-width: 100%; /* Image prend la largeur totale sur mobile */
-    }
+
 
 .box {
   background-color: rgba(255, 255, 255, 0.1);

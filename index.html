@@ -28,6 +28,8 @@ font-size: 40px }
 body{
 background-image: url(../MonSite/Image/backgroundimg.jpg);
 background-size: cover;
+background-position: center center;  /* Centre l'image de fond */
+background-repeat: no-repeat;  /* Empêche la répétition de l'image */
 justify-content: space-around;
 align-items: center;
 background-size: cover;
@@ -42,6 +44,13 @@ img {
 
 }
 
+@media (max-width: 768px) {
+  body {
+    background-size: cover;  /* L'image s'adapte à la taille de l'écran */
+    background-position: center center;  /* L'image est toujours centrée */
+    background-repeat: no-repeat;  /* Pas de répétition */
+  }
+}
 
 
 .box {
