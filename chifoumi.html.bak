@@ -7,10 +7,21 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background-image: url(../MonSite/Image/backgroundimg.jpg);
+     background-image: url(../MonSite/Image/backgroundimg.jpg); 
       background-size: cover;
+	  body {
+  background-repeat: no-repeat;     /* ✅ empêche que l’image se répète */
+  background-size: cover;           /* ✅ adapte l’image à la taille de l’écran */
+  background-position: center top;  /* ✅ garde le haut visible */
+  background-attachment: fixed;     /* optionnel : effet de fond fixe sur PC */
+  min-height: 100vh;                /* couvre toute la hauteur */
+  margin: 0;
+}
+
+	  
+	  
     }
-p{ { color: #FFFFF; }
+
     h1 {
       font-size: 40px;
       margin-top: 20px;
@@ -75,7 +86,7 @@ p{ { color: #FFFFF; }
 
   <p id="vies"></p>
   <p id="result"></p>
-
+ <a href="index.html">Retour à la page d'accueil</a>
   <script src="cfm.js"></script>
 </body>
 </html>
