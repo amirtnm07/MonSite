@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
 <style>
 
@@ -38,9 +39,14 @@ gap: 20px;
 img {
   border: 10px solid transparent;
   border-radius: 10px;
+
 }
 
-
+/* Pour les smartphones */
+@media (max-width: 768px) {
+    img {
+        max-width: 100%; /* Image prend la largeur totale sur mobile */
+    }
 
 .box {
   background-color: rgba(255, 255, 255, 0.1);
@@ -93,7 +99,7 @@ img {
 <div class="container"    >
 <!--  -->
 <div class="column"  >
-<div class= "box"  >
+<div class= "box" data-tilt data-tilt-glare   >
   <ol> Lien vers <a href ="justeprix.html"> Le Juste Prix </ol>
 
 <a href="justeprix.html"><img class="img" src="../MonSite/Image/Logo_Juste_Prix_2024_(M6).png" width="400" height="300" align="top-right" BORDER="10"    /></a></div>
@@ -108,11 +114,11 @@ img {
  <!-- -->
  
 <div class="column">
- <div class= "box"> <ol> Lien vers <a href ="pendu.html"> Le Pendu </ol>
+ <div class= "box" data-tilt data-tilt-glare > <ol> Lien vers <a href ="pendu.html"> Le Pendu </ol>
 
  <a href="pendu.html"><img class="img" src="../MonSite/Image/unnamed.png" width="400" height="300" BORDER="10"  /></a> </div>
 
-<div class= "box"> <ol>Lien vers <a href ="npvp.html">N'oubliez Pas Les Paroles </ol>
+<div class= "box" data-tilt data-tilt-glare > <ol>Lien vers <a href ="npvp.html">N'oubliez Pas Les Paroles </ol>
 
 <a href="npvp.html"><img class="img" src="../MonSite/Image/nplp.jpg" width="400" height="300" BORDER="10"/> </a></div>
 
@@ -120,6 +126,16 @@ img {
 </div>
 
 <script src="../MonSite/vanilla-tilt.js"></script>
+<script>
+  // Initialisation de VanillaTilt avec l'option touch activée
+  VanillaTilt.init(document.querySelectorAll('.box'), {
+    max: 25,  // Angle maximal de rotation
+    speed: 400,  // Vitesse de l'animation
+    glare: true,  // Effet de brillance
+    "max-glare": 0.5,  // Intensité de la brillance
+    touch: true // Activer la gestion du toucher pour mobile
+  });
+
 
 </body>
 

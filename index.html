@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
 <style>
 
@@ -38,6 +39,7 @@ gap: 20px;
 img {
   border: 10px solid transparent;
   border-radius: 10px;
+
 }
 
 
@@ -120,6 +122,16 @@ img {
 </div>
 
 <script src="../MonSite/vanilla-tilt.js"></script>
+<script>
+  // Initialisation de VanillaTilt avec l'option touch activée
+  VanillaTilt.init(document.querySelectorAll('.box'), {
+    max: 25,  // Angle maximal de rotation
+    speed: 400,  // Vitesse de l'animation
+    glare: true,  // Effet de brillance
+    "max-glare": 0.5,  // Intensité de la brillance
+    touch: true // Activer la gestion du toucher pour mobile
+  });
+
 
 </body>
 
