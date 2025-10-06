@@ -4,7 +4,8 @@
 <head>
 <style>
 
-h1 {font-family: 'caviar_dreamsregular';
+h1 {
+ font-family: 'caviar_dreamsregular';
   font-weight: normal;
   color: white;
   font-size: 3em;
@@ -14,12 +15,13 @@ h1 {font-family: 'caviar_dreamsregular';
   box-shadow: 5px 5px 5px grey;
   padding: 10px 20px;
   text-align: center;
-  position: absolute;
-  top: 20px;
+  position: fixed;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
 }
+
 
 ol {font-style: oblique;
  color: #FFFFF;
@@ -30,11 +32,15 @@ background-image: url(../MonSite/Image/backgroundimg.jpg);
 background-size: cover;
 background-position: center center;  /* Centre l'image de fond */
 background-repeat: no-repeat;  /* Empêche la répétition de l'image */
-justify-content: space-around;
-align-items: center;
+background-attachment: fixed;        /* ✅ Reste fixe quand on scrolle */
+   padding-top: 120px; /* espace pour laisser passer le h1 fixe */
+justify-content: center;
+<!-- align-items: center; -->
 background-size: cover;
-min-height: 1300px;
+  min-height: 100vh;  
+  margin: 0;
 display: flex; 
+  align-items: flex-start;
 flex-wrap: wrap;
 gap: 20px;
 }
@@ -43,30 +49,36 @@ img {
   border-radius: 10px;
 
 }
-
-@media (max-width: 768px) {
+/* ===== Mobile / tactile : on désactive le fixed pour éviter les coupes ===== */
+@media (max-width: 768px), (pointer: coarse) {
   body {
-    background-size: cover;  /* L'image s'adapte à la taille de l'écran */
-    background-position: center center;  /* L'image est toujours centrée */
-    background-repeat: no-repeat;  /* Pas de répétition */
+    background-attachment: scroll;   /* important sur mobile */
+    background-position: center top;
+    min-height: 100vh;
+    padding-top: 100px;
   }
+  /* ajustements responsive */
+  h1 { font-size: 1.8rem; padding: 8px 14px; top: 8px; }
+  .container { flex-direction: column; gap: 20px; padding: 0 12px; }
+  .box { width: 100%; max-width: 420px; }
+}
 }
 
 
 .box {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 1px;
-  border-radius: 10px;
+ background: linear-gradient(145deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+  border: 2px solid gold;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
   transition: all 0.5s ease;
   text-align: center;
 }
 
 .box:hover {
-  background-color: rgb(62, 62, 62);
-  color: white;
-  cursor: pointer;
-  transform: scale(1.03);
-  box-shadow: 0 0 15px gold;
+ background: linear-gradient(145deg, gold, orange);
+  box-shadow: 0 0 25px gold;
+  transform: scale(1.05);
+  color: black;
 }
 
 .container {
@@ -105,11 +117,11 @@ img {
 <!--  -->
 <div class="column"  >
 <div class= "box" data-tilt data-tilt-glare   >
-  <ol> Lien vers <a href ="justeprix.html"> Le Juste Prix </ol>
+  <ol> <a href ="justeprix.html"> Le Juste Prix </ol>
 
 <a href="justeprix.html"><img class="img" src="../MonSite/Image/Logo_Juste_Prix_2024_(M6).png" width="400" height="300" align="top-right" BORDER="10"    /></a></div>
 
- <div class= "box" data-tilt data-tilt-glare > <ol> Lien vers <a href ="chifoumi.html"> Le chifoumi </ol>
+ <div class= "box" data-tilt data-tilt-glare > <ol> <a href ="chifoumi.html"> Le chifoumi </ol>
 
  <a href="chifoumi.html"><img class="img" src="../MonSite/Image/chifoumi.jpg"  width="400" height="300" BORDER="10" /></a> </div>
  </div>
@@ -119,28 +131,50 @@ img {
  <!-- -->
  
 <div class="column">
- <div class= "box" data-tilt data-tilt-glare > <ol> Lien vers <a href ="pendu.html"> Le Pendu </ol>
+ <div class= "box" data-tilt data-tilt-glare > <ol>  <a href ="pendu.html"> Le Pendu </ol>
 
  <a href="pendu.html"><img class="img" src="../MonSite/Image/unnamed.png" width="400" height="300" BORDER="10"  /></a> </div>
 
-<div class= "box" data-tilt data-tilt-glare > <ol>Lien vers <a href ="npvp.html">N'oubliez Pas Les Paroles </ol>
+<div class= "box" data-tilt data-tilt-glare > <ol> <a href ="npvp.html">N'oubliez Pas Les Paroles </ol>
 
 <a href="npvp.html"><img class="img" src="../MonSite/Image/nplp.jpg" width="400" height="300" BORDER="10"/> </a></div>
 
 </div>
 </div>
 
-<script src="../MonSite/vanilla-tilt.js"></script>
+<!-- <script src="../MonSite/vanilla-tilt.js"></script> -->
 <script>
-  // Initialisation de VanillaTilt avec l'option touch activée
-  VanillaTilt.init(document.querySelectorAll('.box'), {
-    max: 25,  // Angle maximal de rotation
-    speed: 400,  // Vitesse de l'animation
-    glare: true,  // Effet de brillance
-    "max-glare": 0.5,  // Intensité de la brillance
-    touch: true // Activer la gestion du toucher pour mobile
-  });
+  // Fonction pour initialiser VanillaTilt
+  function initTilt() {
+    VanillaTilt.init(document.querySelectorAll(".box"), {
+      max: 25,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.5,
+      gyroscope: true, // ✅ active l'effet avec les capteurs du téléphone
+    });
+  }
 
+  // Vérifie si on est sur un mobile
+  if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") {
+    // iPhone/iPad demandent une autorisation
+    document.addEventListener("click", function askPermission() {
+      DeviceOrientationEvent.requestPermission()
+        .then(response => {
+          if (response === "granted") {
+            initTilt();
+          } else {
+            alert("Autorise les capteurs pour voir l'effet !");
+          }
+        })
+        .catch(console.error);
+      document.removeEventListener("click", askPermission);
+    });
+  } else {
+    // Android ou PC
+    initTilt();
+  }
+</script>
 
 </body>
 
