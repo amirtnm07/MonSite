@@ -132,15 +132,37 @@ img {
 
 <script src="../MonSite/vanilla-tilt.js"></script>
 <script>
-  // Initialisation de VanillaTilt avec l'option touch activée
-  VanillaTilt.init(document.querySelectorAll('.box'), {
-    max: 25,  // Angle maximal de rotation
-    speed: 400,  // Vitesse de l'animation
-    glare: true,  // Effet de brillance
-    "max-glare": 0.5,  // Intensité de la brillance
-    touch: true // Activer la gestion du toucher pour mobile
-  });
+  // Fonction pour initialiser VanillaTilt
+  function initTilt() {
+    VanillaTilt.init(document.querySelectorAll(".box"), {
+      max: 25,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.5,
+      gyroscope: true, // ✅ active l'effet avec les capteurs du téléphone
+    });
+  }
 
+  // Vérifie si on est sur un mobile
+  if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") {
+    // iPhone/iPad demandent une autorisation
+    document.addEventListener("click", function askPermission() {
+      DeviceOrientationEvent.requestPermission()
+        .then(response => {
+          if (response === "granted") {
+            initTilt();
+          } else {
+            alert("Autorise les capteurs pour voir l'effet !");
+          }
+        })
+        .catch(console.error);
+      document.removeEventListener("click", askPermission);
+    });
+  } else {
+    // Android ou PC
+    initTilt();
+  }
+</script>
 
 </body>
 

@@ -44,6 +44,13 @@ img {
 
 }
 
+@media (max-width: 768px) {
+  body {
+    background-size: cover;  /* L'image s'adapte à la taille de l'écran */
+    background-position: center center;  /* L'image est toujours centrée */
+    background-repeat: no-repeat;  /* Pas de répétition */
+  }
+}
 
 
 .box {
