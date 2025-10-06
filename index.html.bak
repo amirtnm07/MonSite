@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+h1 {font-family: 'caviar_dreamsregular';
+  font-weight: normal;
+  color: white;
+  font-size: 3em;
+  background-color: rgb(59, 80, 240);
+  border: 3px solid gold;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px grey;
+  padding: 10px 20px;
+  text-align: center;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+ol {font-style: oblique;
+ color: #FFFFF;
+font-size: 40px }
+
+body{
+background-image: url(../MonSite/Image/backgroundimg.jpg);
+background-size: cover;
+justify-content: space-around;
+align-items: center;
+background-size: cover;
+min-height: 1300px;
+display: flex; 
+flex-wrap: wrap;
+gap: 20px;
+}
+img {
+  border: 10px solid transparent;
+  border-radius: 10px;
+}
+
+
+
+.box {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1px;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  text-align: center;
+}
+
+.box:hover {
+  background-color: rgb(62, 62, 62);
+  color: white;
+  cursor: pointer;
+  transform: scale(1.03);
+  box-shadow: 0 0 15px gold;
+}
+
+.container {
+  display: flex;
+  justify-content: center; 
+  gap: 40px;                
+  margin-top: 50px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;              
+}
+
+
+}
+
+
+</style>
+
+
+<link rel="stylesheet" href="../MonSite/CSS/styles.css">
+<title>Les jeux d'Amir</title>
+
+</head>
+
+
+
+<body>
+
+
+<h1 style ="">Bienvenue dans les jeux d'Amir</h1>
+
+<div class="container"    >
+<!--  -->
+<div class="column"  >
+<div class= "box"  >
+  <ol> Lien vers <a href ="justeprix.html"> Le Juste Prix </ol>
+
+<a href="justeprix.html"><img class="img" src="../MonSite/Image/Logo_Juste_Prix_2024_(M6).png" width="400" height="300" align="top-right" BORDER="10"    /></a></div>
+
+ <div class= "box" data-tilt data-tilt-glare > <ol> Lien vers <a href ="chifoumi.html"> Le chifoumi </ol>
+
+ <a href="chifoumi.html"><img class="img" src="../MonSite/Image/chifoumi.jpg"  width="400" height="300" BORDER="10" /></a> </div>
+ </div>
+ 
+ 
+ 
+ <!-- -->
+ 
+<div class="column">
+ <div class= "box"> <ol> Lien vers <a href ="pendu.html"> Le Pendu </ol>
+
+ <a href="pendu.html"><img class="img" src="../MonSite/Image/unnamed.png" width="400" height="300" BORDER="10"  /></a> </div>
+
+<div class= "box"> <ol>Lien vers <a href ="npvp.html">N'oubliez Pas Les Paroles </ol>
+
+<a href="npvp.html"><img class="img" src="../MonSite/Image/nplp.jpg" width="400" height="300" BORDER="10"/> </a></div>
+
+</div>
+</div>
+
+<script src="../MonSite/vanilla-tilt.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+const motSecret = "BRAVO";
+let motAffiche = Array(motSecret.length).fill("_");
+let erreurs = 0;
+const maxErreurs = 5;
+
+document.getElementById("mot").textContent = motAffiche.join(" ");
+const alphabetDiv = document.getElementById("alphabet");
+
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(lettre => {
+  const btn = document.createElement("button");
+  btn.textContent = lettre;
+  btn.onclick = () => verifierLettre(lettre, btn);
+  alphabetDiv.appendChild(btn);
+});
+
+function verifierLettre(lettre, bouton) {
+  bouton.disabled = true;
+  let bonneLettre = false;
+
+  for (let i = 0; i < motSecret.length; i++) {
+    if (motSecret[i] === lettre) {
+      motAffiche[i] = lettre;
+      bonneLettre = true;
+    }
+  }
+
+  if (!bonneLettre) {
+    erreurs++;
+    document.getElementById("erreurs").textContent = erreurs;
+  }
+
+  document.getElementById("mot").textContent = motAffiche.join(" ");
+
+  if (!motAffiche.includes("_")) {
+    document.getElementById("message").textContent = "Bravo, tu as gagné !";
+    desactiverBoutons();
+  } else if (erreurs >= maxErreurs) {
+    document.getElementById("message").textContent = "Perdu ! Le mot était : " + motSecret;
+    desactiverBoutons();
+  }
+}
+
+function desactiverBoutons() {
+  document.querySelectorAll("#alphabet button").forEach(btn => btn.disabled = true);
+}

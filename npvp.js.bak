@@ -1,0 +1,10 @@
+<button onclick="afficherSolutions()">Afficher les réponses</button>
+
+<script>
+  function afficherSolutions() {
+    document.getElementById("word1").value = reponses[0];
+    document.getElementById("word2").value = reponses[1];
+    document.getElementById("resultat").innerText =
+      "Voici les bonnes réponses ! Essaie encore pour t'entraîner 🎶";
+  }
+</script>

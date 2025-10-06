@@ -1,0 +1,74 @@
+var secret;
+var nbVie = 4;
+var modeJeu = ""; // "un" ou "deux"
+
+function unJoueur() {
+    // Mode 1 joueur : la machine choisit un chiffre
+    secret = Math.floor(Math.random() * 10); // Un chiffre entre 0 et 9
+    nbVie = 4;
+    modeJeu = "un";
+    document.getElementById('message').textContent = "Mode 1 Joueur activé. Devinez le chiffre !";
+    document.getElementById('guess').style.display = 'inline'; // Affiche l'input pour entrer un chiffre
+    document.querySelector('button[onclick="test()"]').style.display = 'inline'; // Affiche le bouton pour tester
+    document.getElementById('proposerValeur').style.display = 'none'; // Cache le bouton "Proposer une valeur" pour un joueur
+    document.getElementById('replayBtn').style.display = 'none'; // Cache le bouton "Rejouer" pour le moment
+    document.getElementById('nbVie').textContent = "Vies restantes : " + nbVie;
+}
+
+function deuxJoueurs() {
+    // Mode 2 joueurs : le premier joueur entre un chiffre secret
+    secret = parseInt(prompt("Joueur 1, entrez un chiffre secret entre 0 et 9 :"));
+    nbVie = 4;
+    modeJeu = "deux";
+    document.getElementById('message').textContent = "Mode 2 Joueurs activé. Joueur 2, devinez le chiffre !";
+    document.getElementById('guess').style.display = 'inline'; // Affiche l'input pour entrer un chiffre
+    document.querySelector('button[onclick="test()"]').style.display = 'inline'; // Affiche le bouton pour tester
+    document.getElementById('proposerValeur').style.display = 'none'; // Cache le bouton "Proposer une valeur"
+    document.getElementById('replayBtn').style.display = 'none'; // Cache le bouton "Rejouer" pour le moment
+    document.getElementById('nbVie').textContent = "Vies restantes : " + nbVie;
+}
+
+function test() {
+    var guess = parseInt(document.getElementById('guess').value);
+
+    // Vérifier si le chiffre est correct
+    if (guess === secret) {
+        if (modeJeu === "un") {
+            document.getElementById('message').textContent = "Bravo! Vous avez deviné le chiffre.";
+        } else {
+            document.getElementById('message').textContent = "Joueur 2 a deviné le chiffre ! Bravo !";
+        }
+        // Afficher le bouton pour recommencer
+        document.querySelector('button[onclick="rejouer()"]').style.display = 'inline';
+    } else {
+        nbVie--;
+        document.getElementById('nbVie').textContent = "Vies restantes : " + nbVie;
+
+        if (nbVie <= 0) {
+            // Si les vies sont épuisées, l'autre joueur gagne
+            if (modeJeu === "un") {
+                document.getElementById('message').textContent = "Désolé, vous avez perdu ! Le chiffre était " + secret;
+            } else {
+                document.getElementById('message').textContent = "Joueur 1 a gagné ! Le joueur 2 a épuisé ses vies.";
+            }
+            document.querySelector('button[onclick="rejouer()"]').style.display = 'inline';
+        } else {
+            if (guess < secret) {
+                document.getElementById('message').textContent = "Le chiffre est plus grand !";
+            } else {
+                document.getElementById('message').textContent = "Le chiffre est plus petit !";
+            }
+        }
+    }
+}
+
+function rejouer() {
+    // Recommencer une nouvelle partie
+    document.getElementById('guess').value = '';
+    document.getElementById('guess').style.display = 'none'; // Masque le champ de saisie
+    document.querySelector('button[onclick="test()"]').style.display = 'none'; // Masque le bouton de test
+    document.querySelector('button[onclick="rejouer()"]').style.display = 'none'; // Masque le bouton de rejouer
+    document.getElementById('message').textContent = "Choisissez un mode de jeu.";
+    document.getElementById('nbVie').textContent = "Nb Vie : 4";
+    document.getElementById('proposerValeur').style.display = 'inline'; // Affiche le bouton "Proposer une valeur"
+}

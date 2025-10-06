@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Le Chifoumi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+     background-image: url(../MonSite/Image/backgroundimg.jpg); 
+      background-size: cover;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-top: 20px;
+    }
+
+    .players {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 20px;
+    }
+
+    .players img {
+      width: 150px;
+      height: 200px;
+      margin: 10px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      background-color: white;
+      transition: opacity 0.3s ease;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    #result, #vies {
+      font-size: 20px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Jeu du Chifoumi</h1>
+
+  <div class="players">
+    <div>
+      <img id="imgJoueur" src="../MonSite/Image/56832.png" >
+      <p>Joueur</p>
+    </div>
+    <div>
+      <img id="imgOrdi" src="../MonSite/Image/331006.png">
+      <p>Ordinateur</p>
+    </div>
+  </div>
+
+  <div>
+    <button class="game-buttons" onclick="choisir('pierre')">Pierre</button>
+    <button class="game-buttons" onclick="choisir('feuille')">Feuille</button>
+    <button class="game-buttons" onclick="choisir('ciseaux')">Ciseaux</button>
+  </div>
+
+  <div>
+    <button onclick="nouveauJeu()">Nouveau Jeu</button>
+    <button onclick="finPartie()">Fin de Partie</button>
+  </div>
+
+  <p id="vies"></p>
+  <p id="result"></p>
+ <a href="index.html">Retour à la page d'accueil</a>
+  <script src="cfm.js"></script>
+</body>
+</html>

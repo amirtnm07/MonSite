@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeu du Juste Prix</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<!-- CSS -->
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-image: url(../MonSite/Image/backgroundimg.jpg);
+background-size: cover;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#proposerValeur, #replayBtn {
+  display: none;
+}
+
+#nbVie, #winner {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 30px;
+  
+  .
+}
+
+</style>
+
+
+<body>
+  <h1>Bienvenue dans le jeu du Juste Prix</h1>
+
+  <!-- Choix du mode de jeu -->
+
+<p>Joueur 1</p>
+<p>Joueur 2</p>
+
+
+  <table>
+    <tr>
+      <td><button type="button" id="onePlayerBtn" onclick="unJoueur()">1 Joueur</button></td>
+      <td><button type="button" id="twoPlayerBtn" onclick="deuxJoueurs()">2 Joueurs</button></td>
+    </tr>
+  </table>
+
+  <!-- Bouton pour proposer une valeur -->
+  <button type="button" id="proposerValeur" onclick="test()" style="display:none;">Proposer une valeur</button>
+
+  <!-- Affichage du nombre de vies -->
+  <p id="nbVie"></p>
+
+  <!-- Affichage du vainqueur -->
+  <p id="winner"></p>
+
+  <!-- Bouton pour rejouer -->
+  <button type="button" id="replayBtn" onclick="rejouer()" style="display:none;">Rejouer</button>
+
+  <!-- Lien vers la page d'accueil -->
+  <a href="index.html">Retour à la page d'accueil</a>
+
+  <input type="number" id="guess" style="display:none;" min="0" max="9" />
+  
+  <script src="jsjp.js"></script>
+</body>
+
+
+</html>
