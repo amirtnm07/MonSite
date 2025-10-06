@@ -10,8 +10,15 @@
     #alphabet button { margin: 5px; }
     #message { font-weight: bold; margin-top: 20px; }
 	
-	 body {background-image: url(../MonSite/Image/backgroundimg.jpg); 
-     background-size: cover;}
+	 body {font-family: Arial, sans-serif;
+  text-align: center;
+  background-image: url(../MonSite/Image/backgroundimg.jpg); 
+  background-repeat: no-repeat;     /* ✅ empêche que l’image se répète */
+  background-size: cover;           /* ✅ adapte l’image à la taille de l’écran */
+  background-position: center top;  /* ✅ garde le haut visible */
+  background-attachment: fixed;     /* optionnel : effet de fond fixe sur PC */
+  min-height: 100vh;                /* couvre toute la hauteur */
+  margin: 0;}
   </style>
 </head>
 <body>
